@@ -4,11 +4,11 @@ export TOKENIZERS_PARALLELISM=0
 
 
 deepspeed \
---include localhost:2,3 \
+--include localhost:0,1 \
 train_lora.py \
 --run_name dow30v3-llama2-5e-5lr-qkvogud \
 --base_model llama2 \
---dataset dow30-20230601-20230930-llama,dow30nobasics-20230601-20230930-llama,dow30v3-20221231-20230531-llama*2 \
+--dataset dow30v3-2023-5-31_2023-11-30-llama \
 --max_length 4096 \
 --batch_size 1 \
 --gradient_accumulation_steps 16 \

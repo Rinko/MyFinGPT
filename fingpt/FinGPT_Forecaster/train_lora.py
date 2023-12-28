@@ -111,6 +111,8 @@ def main(args):
     eval_dataset = original_dataset['test'].shuffle(seed=42).select(range(50))
     
     dataset = original_dataset.map(partial(tokenize, args, tokenizer))
+    #map接收一个函数，Dataset中的每个元素都会被当作这个函数的输入，并将函数返回值作为新的Dataset
+    #partial 函数的功能就是：把一个函数的某些参数给固定住，返回一个新的函数
     print('original dataset length: ', len(dataset['train']))
     dataset = dataset.filter(lambda x: not x['exceed_max_length'])
     print('filtered dataset length: ', len(dataset['train']))
