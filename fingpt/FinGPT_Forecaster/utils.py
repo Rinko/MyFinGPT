@@ -63,7 +63,7 @@ def load_dataset(names, from_remote=False):
         rep = 1
         if not os.path.exists(name):
             rep = int(name.split('*')[1]) if '*' in name else 1
-            name = ('FinGPT/fingpt-forecaster-' if from_remote else ' /FinGPT/fingpt/FinGPT_Forecaster/data/fingpt-forecaster-') + name.split('*')[0]
+            name = ('FinGPT/fingpt-forecaster-' if from_remote else '/FinGPT/fingpt/FinGPT_Forecaster/data/fingpt-forecaster-') + name.split('*')[0]
         tmp_dataset = datasets.load_dataset(name) if from_remote else datasets.load_from_disk(name)
     
         if 'test' not in tmp_dataset:
