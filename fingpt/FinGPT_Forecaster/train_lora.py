@@ -137,7 +137,8 @@ def main(args):
         lr_scheduler_type=args.scheduler,
         save_steps=args.eval_steps,
         eval_steps=args.eval_steps,
-        fp16=True,
+        #fp16=True,
+        bf16=True,
         deepspeed=args.ds_config,
         evaluation_strategy=args.evaluation_strategy,
         remove_unused_columns=False,
@@ -151,7 +152,8 @@ def main(args):
     model.model_parallel = True
     model.model.config.use_cache = False
     
-    model = prepare_model_for_int8_training(model)
+    #model = prepare_model_for_int8_training(model)
+    model = prepare_model_for_8bit_training(model)
 
     # setup peft
     peft_config = LoraConfig(
