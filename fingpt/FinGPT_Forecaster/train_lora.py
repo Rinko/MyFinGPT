@@ -207,7 +207,7 @@ if __name__ == "__main__":
     parser.add_argument("--learning_rate", default=1e-4, type=float, help="The learning rate")
     parser.add_argument("--weight_decay", default=0.01, type=float, help="weight decay")
     parser.add_argument("--num_epochs", default=8, type=float, help="The training epochs")
-    parser.add_argument("--num_workers", default=8, type=int, help="dataloader workers")
+    parser.add_argument("--num_workers", default=4, type=int, help="dataloader workers") #Our suggested max number of worker in current system is 4
     parser.add_argument("--log_interval", default=20, type=int)
     parser.add_argument("--gradient_accumulation_steps", default=8, type=int)
     parser.add_argument("--warmup_ratio", default=0.05, type=float)
