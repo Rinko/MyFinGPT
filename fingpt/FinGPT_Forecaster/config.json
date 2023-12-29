@@ -25,7 +25,7 @@
     "zero_optimization": {
         "stage": 3,
         "offload_optimizer": {
-            "device": "none",
+            "device": "none"
         },
         "offload_param": {
             "device": "cpu",
