@@ -18,4 +18,4 @@ deepspeed \
 --warmup_ratio 0.03 \
 --scheduler constant \
 --evaluation_strategy steps \
---ds_config config.json
+--ds_config /FinGPT/fingpt/FinGPT_Forecaster/config.json
