@@ -86,7 +86,7 @@ def main(args):
     # load model
     model = AutoModelForCausalLM.from_pretrained(
         model_name,
-        load_in_8bit=True,
+        #load_in_8bit=True,
         trust_remote_code=True
     )
     if args.local_rank == 0:
@@ -153,7 +153,7 @@ def main(args):
     model.model.config.use_cache = False
     
     #model = prepare_model_for_int8_training(model)
-    model = prepare_model_for_kbit_training(model)
+    #model = prepare_model_for_kbit_training(model)
 
     # setup peft
     peft_config = LoraConfig(
