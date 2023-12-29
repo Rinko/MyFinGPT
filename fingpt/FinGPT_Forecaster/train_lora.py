@@ -86,7 +86,7 @@ def main(args):
     # load model
     model = AutoModelForCausalLM.from_pretrained(
         model_name,
-        # load_in_8bit=True,
+        load_in_8bit=True,
         trust_remote_code=True
     )
     if args.local_rank == 0:
