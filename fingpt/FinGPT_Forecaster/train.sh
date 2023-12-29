@@ -4,7 +4,7 @@ export TOKENIZERS_PARALLELISM=0
 
 
 deepspeed \
---include localhost:0 \
+--include localhost:0,1 \
 /FinGPT/fingpt/FinGPT_Forecaster/train_lora.py \
 --run_name dow30v3-llama2-5e-5lr-qkvogud \
 --base_model llama2 \
