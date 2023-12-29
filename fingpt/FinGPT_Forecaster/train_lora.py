@@ -137,8 +137,8 @@ def main(args):
         lr_scheduler_type=args.scheduler,
         save_steps=args.eval_steps,
         eval_steps=args.eval_steps,
-        #fp16=True,
-        bf16=True,
+        fp16=True,
+        #bf16=True, Your setup doesn't support bf16/gpu. You need torch>=1.10, using Ampere GPU with cuda>=11.0
         deepspeed=args.ds_config,
         evaluation_strategy=args.evaluation_strategy,
         remove_unused_columns=False,
