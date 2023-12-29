@@ -153,7 +153,7 @@ def main(args):
     model.model.config.use_cache = False
     
     #model = prepare_model_for_int8_training(model)
-    model = prepare_model_for_8bit_training(model)
+    model = prepare_model_for_kbit_training(model)
 
     # setup peft
     peft_config = LoraConfig(
