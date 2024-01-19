@@ -124,7 +124,7 @@ def main(args):
     formatted_time = current_time.strftime('%Y%m%d%H%M')
     
     training_args = TrainingArguments(
-        output_dir=f'finetuned_models/{args.run_name}_{formatted_time}', # 保存位置
+        output_dir=f'/autodl-tmp/finetuned_models/{args.run_name}_{formatted_time}', # 保存位置
         logging_steps=args.log_interval,
         num_train_epochs=args.num_epochs,
         per_device_train_batch_size=args.batch_size,
@@ -135,7 +135,9 @@ def main(args):
         weight_decay=args.weight_decay,
         warmup_ratio=args.warmup_ratio,
         lr_scheduler_type=args.scheduler,
-        save_steps=args.eval_steps,
+        save_strategy="no", #显卡平台数据盘只有50G，暂时不保存
+        #save_steps=args.eval_steps,
+        #save_total_limit=5，
         eval_steps=args.eval_steps,
         fp16=True,
         #bf16=True, Your setup doesn't support bf16/gpu. You need torch>=1.10, using Ampere GPU with cuda>=11.0

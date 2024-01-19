@@ -49,7 +49,7 @@ def parse_model_name(name, from_remote=False):
     if name == 'chatglm2':
         return 'THUDM/chatglm2-6b' if from_remote else 'base_models/chatglm2-6b'
     elif name == 'llama2':
-        return 'meta-llama/Llama-2-7b-chat-hf' if from_remote else '/kaggle/input/llama-2/pytorch/7b-chat-hf/1'
+        return 'meta-llama/Llama-2-7b-chat-hf' if from_remote else 'autodl-tmp/'
     else:
         raise ValueError(f"Undefined base model {name}")
         
@@ -63,7 +63,7 @@ def load_dataset(names, from_remote=False):
         rep = 1
         if not os.path.exists(name):
             rep = int(name.split('*')[1]) if '*' in name else 1
-            name = ('FinGPT/fingpt-forecaster-' if from_remote else '/FinGPT/fingpt/FinGPT_Forecaster/data/fingpt-forecaster-') + name.split('*')[0]
+            name = ('FinGPT/fingpt-forecaster-' if from_remote else 'MyFinGPT/fingpt/FinGPT_Forecaster/data/fingpt-forecaster-') + name.split('*')[0]
         tmp_dataset = datasets.load_dataset(name) if from_remote else datasets.load_from_disk(name)
     
         if 'test' not in tmp_dataset:
