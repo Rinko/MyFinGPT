@@ -13,7 +13,7 @@ deepspeed \
 --batch_size 1 \
 --gradient_accumulation_steps 16 \
 --learning_rate 5e-5 \
---num_epochs 5 \
+--num_epochs 3 \
 --log_interval 10 \
 --warmup_ratio 0.03 \
 --scheduler constant \

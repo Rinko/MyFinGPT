@@ -3,14 +3,19 @@
     "train_batch_size": "auto",
     "gradient_accumulation_steps": "auto",
     "optimizer": {
-       "type": "AdamW",
-       "params": {
-         "lr": "auto",
-         "betas": "auto",
-         "eps": "auto",
-         "weight_decay": "auto"
-       }
-   },
+      "type": "ZeroOneAdam",
+      "params": {
+        "lr": "auto",
+        "weight_decay": "auto",
+        "bias_correction": false,
+        "var_freeze_step": 1000,
+        "var_update_scaler": 16,
+        "local_step_scaler": 1000,
+        "local_step_clipper": 16,
+        "cuda_aware": true,
+        "comm_backend_name": "nccl"
+        }
+    },
     "scheduler": {
         "type": "WarmupLR",
         "params": {

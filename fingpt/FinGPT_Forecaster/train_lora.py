@@ -66,15 +66,18 @@ class GenerationEvalCallback(TrainerCallback):
                 generated_texts.append(answer)
                 reference_texts.append(gt)
 
-                # print("GENERATED: ", answer)
-                # print("REFERENCE: ", gt)
+                print("GENERATED: ", answer)
+                print("REFERENCE: ", gt)
 
             metrics = calc_metrics(reference_texts, generated_texts)
             
             # Ensure wandb is initialized
             if wandb.run is None:
                 wandb.init()
-                
+            
+            #print(reference_texts)
+            #print(generated_texts)                
+            print("Metrics: ",metrics)
             wandb.log(metrics, step=state.global_step)
             torch.cuda.empty_cache()            
 
@@ -124,7 +127,7 @@ def main(args):
     formatted_time = current_time.strftime('%Y%m%d%H%M')
     
     training_args = TrainingArguments(
-        output_dir=f'/autodl-tmp/finetuned_models/{args.run_name}_{formatted_time}', # 保存位置
+        output_dir=f'autodl-tmp/finetuned_models/{args.run_name}_{formatted_time}', # 保存位置
         logging_steps=args.log_interval,
         num_train_epochs=args.num_epochs,
         per_device_train_batch_size=args.batch_size,
